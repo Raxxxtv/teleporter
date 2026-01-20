@@ -1,19 +1,21 @@
-SX = exports["es_extended"]:getSharedObject()
+ESX = exports["es_extended"]:getSharedObject()
 
 local marker = {}
 
 local function CreateMarker()
     for id, data in pairs(Config.Marker) do
-        if marker[id] then return end
+        if marker[id] then
+            goto continue
+        end
         marker[id] = exports.mg_lib:AddMarker({
 	    	name = id,
 	    	type = data.type,
 	    	pos = data.pos,
-	    	size = table.concat(data.size, ", "),
-	    	color = table.concat(data.color, ", "),
+	    	size = data.size,
+	    	color = data.color,
 	    	helpNotification = data.helpMessage,
 	    	onUse = function()
-	    		SetEntityCoords(ESX.PlayerData.ped, Config.Coords[1], Config.Coords[2], Config.Coords[3])
+	    		SetEntityCoords(ESX.PlayerData.ped, Config.Coords)
 	    	end,
             offset = data.offset,
             useKey = data.useKey,
@@ -24,9 +26,14 @@ local function CreateMarker()
             bobUpAndDown = data.bobUpAndDown,
             rotate = data.rotate
 	    })
+        ::continue::
     end
 end
 
 AddEventHandler("mg_lib:reload", function()
-	CreateAngryPedMarker()
+	CreateMarker()
+end)
+
+CreateThread(function()
+    CreateMarker()
 end)
