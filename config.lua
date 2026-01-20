@@ -17,9 +17,18 @@ Config.DefaultMarker = { -- Default Marker settings, can be overwritten in Confi
     rotate = false -- Should the marker rotate?
 }
 
-Config.Marker = {
+--[[
+    ['name'] = {
+        pos = vector3(coords), -- Vector3 position where the marker is placed.
+        type = 1,
+        color = {255, 0, 0, 180}
+        -- Here you can add more functions displayed above if you want to overwrite the default settings
+    },
+]]
+
+Config.Marker = { -- Markers can be added with the Template above
     ['marker1'] = {
-        pos = vector3(138.7424, -890.6888, 30.4260), -- Vector3 position where the marker is placed.
+        pos = vector3(138.7424, -890.6888, 30.4260),
         type = 1,
         color = {255, 0, 0, 180}
     },
