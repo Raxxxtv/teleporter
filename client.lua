@@ -5,7 +5,7 @@ SX = exports["es_extended"]:getSharedObject()
 AddEventHandler("mg_lib:reload", function()
 	CreateAngryPedMarker()
 end)
-local marker
+local marker = {}
 
 local function CreateMarker()
     for id, data in pairs(Config.Marker) do
