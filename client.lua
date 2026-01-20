@@ -5,10 +5,12 @@ SX = exports["es_extended"]:getSharedObject()
 AddEventHandler("mg_lib:reload", function()
 	CreateAngryPedMarker()
 end)
+local marker
 
 local function CreateMarker()
     for id, data in pairs(Config.Marker) do
-        angryMarker = exports.mg_lib:AddMarker({
+        if marker[id] then return end
+        marker[id] = exports.mg_lib:AddMarker({
 	    	name = id,
 	    	type = data.type,
 	    	pos = table.concat(data.coords, ", "),
