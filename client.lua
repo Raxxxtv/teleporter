@@ -1,10 +1,5 @@
 SX = exports["es_extended"]:getSharedObject()
 
-
-
-AddEventHandler("mg_lib:reload", function()
-	CreateAngryPedMarker()
-end)
 local marker = {}
 
 local function CreateMarker()
@@ -13,12 +8,12 @@ local function CreateMarker()
         marker[id] = exports.mg_lib:AddMarker({
 	    	name = id,
 	    	type = data.type,
-	    	pos = table.concat(data.coords, ", "),
+	    	pos = data.pos,
 	    	size = table.concat(data.size, ", "),
 	    	color = table.concat(data.color, ", "),
 	    	helpNotification = data.helpMessage,
 	    	onUse = function()
-	    		SetEntityCoords(ESX.PlayerData.ped, 0, 0, 0)
+	    		SetEntityCoords(ESX.PlayerData.ped, Config.Coords[1], Config.Coords[2], Config.Coords[3])
 	    	end,
             offset = data.offset,
             useKey = data.useKey,
@@ -31,3 +26,7 @@ local function CreateMarker()
 	    })
     end
 end
+
+AddEventHandler("mg_lib:reload", function()
+	CreateAngryPedMarker()
+end)

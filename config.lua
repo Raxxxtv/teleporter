@@ -2,7 +2,7 @@ Config = {}
 
 Config.Marker = {
     ['marker1'] = {
-        coords = {5151, 51, 81},
+        pos = vector3(51, 615, -1481),
         type = 1,
         size = {1.2, 1.2, 1.0},
         color = {255, 0, 0, 180},
@@ -17,3 +17,5 @@ Config.Marker = {
         rotate = false
     }
 }
+
+Config.Coords = {0, 0, 0}
