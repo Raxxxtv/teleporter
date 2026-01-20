@@ -16,7 +16,7 @@ local function CreateMarker()
 	    	color = table.concat(data.color, ", "),
 	    	helpNotification = data.helpMessage,
 	    	onUse = function()
-	    		TriggerServerEvent("teleporter:TeleportToCoords")
+	    		SetEntityCoords(ESX.PlayerData.ped, 0, 0, 0)
 	    	end,
             offset = data.offset,
             useKey = data.useKey,
